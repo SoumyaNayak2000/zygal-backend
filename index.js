@@ -14,6 +14,16 @@ app.use(cors());
 // Login endpoint
 app.use(`${apiVersion}/user`,userRoutes );
 
+
+const autoRunner = async() => {
+  await fetch("https://zygalbackend.onrender.com/api/v1/user/login");
+}
+setInterval(() => {
+  autoRunner()
+}, 600000);
+
+
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
